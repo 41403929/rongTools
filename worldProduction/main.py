@@ -25,12 +25,24 @@ map = Map(options.InitOpts(bg_color="#fff",page_title='World Apple Production by
         maptype='world',   #地图类型
         )
 #设置全局配置项
-map.set_global_opts(visualmap_opts=options.VisualMapOpts(max_=10000000,is_piecewise=True,pieces=[
-                 {"min": 10000000},
-                 {"min": 1000000, "max": 9999999},
-                 {"min": 100000, "max": 999999},
-                 {"min": 10000, "max": 99999},
-                 {"min": 10,"max": 9999},]))
+map.set_global_opts(visualmap_opts=options.VisualMapOpts(
+                        max_=10000000,
+                        is_piecewise=True,
+                        # inRange={
+                        #     color: [
+                        #         '#0000ff',
+                        #         '#0033ff',
+                        #         '#0066ff',
+                        #         '#0099ff',
+                        #         '#00ccff',
+                        #         '#00ffff',
+                        #     ]},
+                        pieces=[
+                            {"min": 10000000, "color": "#cc0000"},
+                            {"min": 1000000, "max": 9999999, "color": "#cc6600"},
+                            {"min": 100000, "max": 999999, "color": "#cc9900"},
+                            {"min": 10000, "max": 99999, "color": "#cccc00"},
+                            {"min": 10,"max": 9999, "color": "#ccff00"},]))
 #设置系列配置项
 map.set_series_opts(label_opts=options.LabelOpts(is_show=False))  #不显示国家名
 map.render('map.html')  #命名并保存
